@@ -30,6 +30,8 @@
       isLoggedin: boolean;
       email: string;
       password: string;
-
+      roles:{
+          role: string
+      }
   }
 export type {Book, Category, Theme, User}
