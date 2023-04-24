@@ -25,4 +25,11 @@
         color: string
     };
   }
-export type {Book, Category, Theme}
+
+  type User = {
+      isLoggedin: boolean;
+      email: string;
+      password: string;
+
+  }
+export type {Book, Category, Theme, User}

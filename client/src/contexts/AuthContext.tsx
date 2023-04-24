@@ -7,6 +7,11 @@ type User = {
     roles: string[];
 };
 
+interface UserContextType {
+    user: User | null;
+    setUser: (user: User | null) => void;
+}
+
 
 
 //export default AuthContext;

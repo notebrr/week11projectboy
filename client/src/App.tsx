@@ -8,6 +8,7 @@ import {BrowserRouter, Route, Routes} from "react-router-dom";
 import Login from "./components/Login";
 import ThemeContext from "./contexts/ThemeContext";
 import ThemeContextProvider from "./contexts/ThemeContext";
+import UserContextProvider from "./contexts/UserContext";
 
 const client = new ApolloClient({
     uri: 'http://localhost:4000/graphql',
@@ -18,15 +19,17 @@ const App = () => {
     return (
         <>
             <BrowserRouter>
-                <ThemeContextProvider>
-                    <ApolloProvider client={client}>
-                        <Routes>
-                            <Route path="/" element={<><WithUseQuery />
-                                <SimpleCards client={client} /></>}/>
-                            <Route path="/login" element={<Login/>}/>
-                        </Routes>
-                    </ApolloProvider>
-                </ThemeContextProvider>
+                <UserContextProvider>
+                    <ThemeContextProvider>
+                        <ApolloProvider client={client}>
+                            <Routes>
+                                <Route path="/" element={<><WithUseQuery />
+                                    <SimpleCards client={client} /></>}/>
+                                <Route path="/login" element={<Login/>}/>
+                            </Routes>
+                        </ApolloProvider>
+                    </ThemeContextProvider>
+                </UserContextProvider>
             </BrowserRouter>
         </>
         /*
